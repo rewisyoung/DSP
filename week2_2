@@ -1,0 +1,19 @@
+n=-25:50;
+x=stepseq(0,-25,50)-stepseq(10,-25,50);
+h=((0.9).^n).*stepseq(0,-25,50);
+[h1,n1]=sigfold(h,n);
+
+for k=-25:50
+  if k<0
+    y(k+26)=0;
+  elseif k>=0 & k<9
+    y(k+26)=10*(1-(0.9)^(k+1));
+  else
+    y(k+26)=(10*(0.9)^(k-9))*(1-(0.9)^10);
+  end
+end
+
+subplot(411);stem(n,x);
+subplot(412);stem(n,h);
+subplot(413);stem(n1,h1);
+subplot(414);stem(n,y);

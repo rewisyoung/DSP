@@ -1,0 +1,13 @@
+clear all;close all;
+
+subplot(1,1,1)
+
+n=0:10; x=10*(0.8).^n;
+y=cirshftt(x,6,15);
+n=0:14; x=[x,zeros(1,4)];
+subplot(2,1,1); stem(n,x); title('')
+ylabel('x(n)'); axis([-1,15,-1,11]);
+text(15.5,-1,'n')
+subplot(2,1,2); stem(n,y);title('N=15')
+axis([-1,15,-1,11]);
+text(15.5,-1,'n');

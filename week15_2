@@ -1,0 +1,23 @@
+clear all;close all;
+%x(n)=10(0.8)^n, 0<=n<=10 求並繪出x((-n))%
+subplot(1,1,1)
+
+n=0:10; x=10*(0.8).^n;
+y=x(mod(-n,11)+1);
+subplot(2,1,1); stem(n,x); title('')
+ylabel('x(n)'); axis([-0.5,10.5,-1,11]);
+text(10.8,-1,'n')
+subplot(2,1,2); stem(n,y);title('')
+ylabel('x(-n mod 11)'); axis([-0.5,10.5,-1,11]);
+text(10.8,-1,'n');
+
+figure
+X=dft(x,11); Y=dft(y,11);
+subplot(2,2,1); stem(n,real(X)); axis([-0.5,10.5,-5,50]);
+title('{DFT[x(n)]}'); text(10.8,-5,'k')
+subplot(2,2,2); stem(n,imag(X)); axis([-0.5,10.5,-20,20]);
+title('{DFT[x(n)]}'); text(10.8,-20,'k')
+subplot(2,2,3); stem(n,real(Y)); axis([-0.5,10.5,-5,50]);
+title('{DFT[x((-n))]11}'); text(10.8,-5,'k')
+subplot(2,2,4); stem(n,imag(Y)); axis([-0.5,10.5,-20,20]);
+title('{DFT[x((-n))]11}'); text(10.8,-20,'k')
